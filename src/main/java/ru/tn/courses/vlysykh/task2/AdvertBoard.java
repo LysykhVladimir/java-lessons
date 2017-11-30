@@ -7,6 +7,9 @@ import java.util.LinkedHashSet;
  * Created by ElemenT87 on 25.03.2017.
  */
  class AdvertBoard {
+    private static final int MIN_SIZE_A = 100;
+    private static final int MIN_SIZE_B = 100;
+    private static final int MIN_COUNT_ADVERT = 5;
     private static Integer sideA;
     private static Integer sideB;
     private ArrayList<Advert> advertList;
@@ -15,8 +18,8 @@ import java.util.LinkedHashSet;
      public AdvertBoard() {
         ArrayList<Advert> advertList = new ArrayList<>();
         LinkedHashSet<Nail> nails = new LinkedHashSet<>();
-        this.sideA = 100;
-        this.sideB = 100;
+        this.sideA = MIN_SIZE_A;
+        this.sideB = MIN_SIZE_B;
         this.nails=nails;
         this.advertList = advertList;
     }
@@ -35,11 +38,11 @@ import java.util.LinkedHashSet;
     }
 
     boolean isGoodBoardSize(int A, int B) {
-        return A >= 100 && B >= 100;
+        return A >= MIN_SIZE_A && B >= MIN_SIZE_B;
     }
 
     public void addAdvert(Integer count) {
-        if (count>=5) {
+        if (count>= MIN_COUNT_ADVERT) {
            for (int advertCount=1; advertCount<=count;advertCount++) {
                 Advert advert = new Advert();
                 Integer lastIndex = advertList.size() - 1;
